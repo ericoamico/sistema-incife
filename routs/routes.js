@@ -2,15 +2,15 @@ const express = require("express");
 const router = express.Router();
 const controller = require("../controllers/controller");
 
-router.get("/addpaciente", controller.abreaddpaciente);
-router.post("/addpaciente", controller.addpaciente);
+router.get("/addevento", controller.abreaddevento);
+router.post("/addevento", controller.addevento);
 
-router.get("/lstpaciente", controller.lstpaciente);
-router.post("/lstpaciente", controller.pesquisapaciente);
+router.get("/lstevento", controller.lstevento);
+router.post("/lstevento", controller.pesquisaevento);
 
-router.get("/edtpaciente/:id", controller.abreedtpaciente);
-router.post("/edtpaciente/:id", controller.edtpaciente);
+router.get("/edtpaciente/:id", controller.abreedtevento);
+router.post("/edtevento/:id", controller.edtevento);
 
-router.get("/delpaciente/:id", controller.delpaciente);
+router.get("/delevento/:id", controller.delevento);
 
 module.exports = router;
