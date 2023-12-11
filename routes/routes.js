@@ -1,13 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const controller = require("../controllers/controller");
+const controller = require("../controllers/controllers");
 
-router.get("/addevento", controller.abreaddevento);
-router.post("/addevento", controller.addevento);
+router.get("/addevento", controller.abreAddEvento);
+router.post("/addevento", controller.add_evento);
 
-router.get("/lstevento", controller.lstevento);
+router.get("/lstevento", controller.listar);
 router.post("/lstevento", controller.pesquisaevento);
-
+router.get("/partialuno", controller.inscreverparticipante);
 router.get("/edtpaciente/:id", controller.abreedtevento);
 router.post("/edtevento/:id", controller.edtevento);
 

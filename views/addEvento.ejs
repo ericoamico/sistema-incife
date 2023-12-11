@@ -1,0 +1,25 @@
+<%-include('cabecalho')%>
+
+<form methode="post">
+  <label for="eventnome">Digite o nome do evento</label>
+  <input
+    type="text"
+    name="addevento"
+    id="eventnome"
+  />
+  <label for="eventdata">data do evento</label>
+  <input
+    type="date"
+    id="eventdata"
+  />
+  <label for="eventlocal">local do evento</label>
+  <input
+    type="text"
+    id="eventlocal"
+  />
+  <input
+    type="submit"
+    value="adicionar"
+  />
+</form>
+<%-include('rodape')%>

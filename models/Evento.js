@@ -1,9 +1,9 @@
-const conexao = require('../config/conexao.js')
+const conexao = require("../config/conexao.js");
 
-const SistemaInsifeSchema = new conexao.Schema({
-    event_Nome: String,
-    event_Data: Date,
-    event_Local: String,
-})
+const EventoSchema = new conexao.Schema({
+  event_Nome: String,
+  event_Data: Date,
+  event_Local: String,
+});
 
-module.exports = conexao.model('Evento',EventoSchema)
+module.exports = conexao.model("Evento", EventoSchema);
