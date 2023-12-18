@@ -1,12 +1,29 @@
-<%-include('cabecalho')%>
-<%-include('rodape')%>
+<%-include('cabecalho')%> <%-include('rodape')%>
 
 <h1>lista de eventos</h1>
 <table>
-    <tr>
-        <th>nome do evento</th>
-        <th>data do evento</th>
-        <th>local do evento</th>
-    </tr>
-    
+  <tr>
+    <th>nome do evento</th>
+    <th>data do evento</th>
+    <th>local do evento</th>
+    <th>editar evento</th>
+    <th>deletar evento</th>
+  </tr>
+  <%Eventos.forEach((evento) =>{%>
+  <tr>
+    <td><%=evento.event_Nome%></td>
+
+    <td><%=evento.event_Data%></td>
+
+    <td><%=evento.event_Nome%></td>
+
+    <td>
+      <button value="editar evento">Editar</button>
+    </td>
+
+    <td>
+      <button value="deletar evento">Deletar</button>
+    </td>
+  </tr>
+  <%})%>
 </table>

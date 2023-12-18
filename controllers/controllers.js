@@ -1,4 +1,4 @@
-const Aluno = require("../models/Aluno");
+const Aluno = require("../models/partialuno");
 const evento = require("../models/Evento");
 const tipo_evento = require("../models/Tipo_Evento");
 const tipo_trabalho = require("../models/Tipo_Trabalho");
@@ -9,39 +9,36 @@ function abreAddEvento(req, res) {
 }
 
 function add_evento(req, res) {
+  let nome = req.body.event_Nome;
+  let data = req.body.event_Data;
+  let local = req.body.event_Local;
+
+  let Evento = new evento({
+    event_Nome: nome,
+    event_Data: data,
+    event_Local: local,
+  });
+
+  Evento.save().then(function (docs) {
+    res.redirect("/listar");
+  });
+}
+
+function abreinscreverparticipante(req, res) {
+  res.render("partialuno");
+}
+function inscreverparticipante(req, res) {
   let nome = req.body.nome;
-  let data = req.body.data;
-  let local = req.body.local;
-
-  let evento = new Evento({
+  let inscricao = req.body.inscricao;
+  let participante = new participante({
     nome: nome,
-    data: data,
-    local: local,
+    inscricao: inscricao,
   });
-
-  evento.save().then(function (docs) {
-    res.send("Salvo");
-  });
-}
-
-function abreinscreverparticipante(){
-  res.render('partialuno')
-
-}
-function inscreverparticipante(){
-  let nome = req.body.nome
-  let inscricao = req.body.inscricao
-  let participante = new Participante({
-     nome:nome,
-     inscricao :inscricao
-  })
-  participante.save().then(function (docs) {
-})
-
+  participante.save().then(function (docs) {});
 }
 function listar(req, res) {
-  Evento.find({}).then(function (eventos) {
-    res.render("lst.ejs", { Eventos: eventos });
+  evento.find({}).then(function (eventos) {
+    res.render("listar.ejs", { Eventos: eventos });
   });
 }
 
@@ -53,7 +50,7 @@ function pesquisaevento(req, res) {
     if (err) {
       res.send(err.message);
     } else {
-      res.render("lstevento.ejs", { Eventos: eventos });
+      res.render("lsteventos.ejs", { Eventos: eventos });
     }
   });
 }
@@ -79,8 +76,9 @@ function edtevento(req, res) {
       if (err) {
         res.send(err.message);
       } else {
-        res.redirect("/lstevento");
-      }pesquisaevento
+        res.redirect("/listar");
+      }
+      pesquisaevento;
     });
 }
 
@@ -89,14 +87,12 @@ function delevento(req, res) {
     if (err) {
       res.send(err.message);
     } else {
-      res.redirect("/lstevento");
+      res.redirect("/listar");
     }
   });
 }
 
-module.exports
- = {
-  //abreaddevento
+module.exports = {
   add_evento,
   abreAddEvento,
   listar,
@@ -104,5 +100,5 @@ module.exports
   delevento,
   abreedtevento,
   edtevento,
-  inscreverparticipante
+  inscreverparticipante,
 };
